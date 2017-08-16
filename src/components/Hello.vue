@@ -4,35 +4,34 @@
 
 <div class="">
 
-  
+
 
  <section id="showcase">
       <div class="container">
         <h1>GoPomelo Customer Service ChatBot </h1>
         <p>A ChatBot that can help answering your questions.</p>
-        
-        
+
+
   <div>
   <b-button href = "https://www.gopomelo.com/contacts/" > Contact us!  </b-button>
-  
+
   </div>
-        
+
       </div>
-      
+
 
     </section>
 
         <div class="chat_box">
 <div class="chat_head">Bot On Service</div>
 <div class="chat_body">
-<div class="user"> Bot#1 </div>
+<div class="user"> Customer Service </div>
 </div>
 </div>
 <div class="msg_box" style="right:290px">
-<div class="msg_head">Bot#1
-<div class="close">x</div>
+<div class="msg_head">GoPomelo
+<div class="close" v-on:click='destrory()'>x</div>
 </div>
-<!-- <div class='g' v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10" > -->
 
 
 
@@ -54,7 +53,6 @@
   </div>
 
   </div>
-  <!-- </div> -->
   <div class="msg_footer" >
     <b-form-input placeholder='message' id='in' class="msg_input" v-model='text' v-on:keyup.enter="send(text)">
     </b-form-input></div>
@@ -84,6 +82,11 @@ export default {
     }, 1000)
   },
   methods: {
+    destrory () {
+      this.conversation = []
+      document.getElementById('in').value = ' '
+      document.getElementById('in').placeholder = 'message'
+    },
     getChat () {
       PostsApi.getChat(_conversation => {
         this.conversation = _conversation
@@ -138,7 +141,7 @@ export default {
 body{
 	background: #259b77;
 	margin:0px;
-	height:900px;
+	height:700px;
 	font-family: sans-serif;
 }
 
@@ -151,7 +154,7 @@ body{
 }
 .chat_body{
 	background:white;
-	height:400px;
+	height:200px;
 	padding:5px 0px;
 }
 
@@ -291,6 +294,6 @@ body{
     color: #292b2c;
     background-color: #fff;
     border-color: #ccc;
-    
+
 }
 </style>
